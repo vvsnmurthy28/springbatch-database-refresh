@@ -120,9 +120,9 @@ public class DatabaseService {
             int[] results = targetJdbcTemplate.batchUpdate(insertQuery, sourceData);
 
             return results.length;
-        } catch (Exception e) {
-            log.error("Error in copyDataViaApplication for table: {}", tableName, e);
-            throw new RuntimeException("Batch copy failed for table: " + tableName, e);
+        } catch (Throwable t) {
+            log.error("Error in copyDataViaApplication for table: {}", tableName, t);
+            throw new RuntimeException("Batch copy failed for table: " + tableName, t);
         }
     }
 
